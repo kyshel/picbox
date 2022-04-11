@@ -50,9 +50,9 @@
             </div>
             <div>
                 示例图片（功能暂不可用）
-                <img src="example1_ym.jpg" alt="yangmi" id="im_ym" height="100">
-                <img src="example2_lena.png" alt="lena" height="100" >
-                <img src="example3_ana.jpg" alt="ana" height="100" >
+                <img src="example1_ym.jpg"  class="im_example" alt="yangmi" id="im_ym" height="100">
+                <img src="example2_lena.png" class="im_example" alt="lena" height="100" >
+                <img src="example3_ana.jpg" class="im_example"  alt="ana" height="100" >
 
             </div>
           </div>
@@ -89,6 +89,7 @@
 						"origin_name": file_input.files[0].name,
 						"content":e.target.result
 					};
+					console.log(e.target.result)
 					// console.log(image)
                     // deposit(image);
 
@@ -107,6 +108,52 @@
 			}
 		}
 
+		$('.im_example').click(function() {
+			// $('.img1 img').attr('src');
+			im_src = $(this).attr('src')
+			useSample(im_src)
+		});
+		
+		function toDataURL(url, callback) {
+			var xhr = new XMLHttpRequest();
+			xhr.onload = function() {
+				var reader = new FileReader();
+				reader.onloadend = function() {
+					callback(reader.result);
+				}
+				reader.readAsDataURL(xhr.response);
+			};
+			xhr.open('GET', url);
+			xhr.responseType = 'blob';
+			xhr.send();
+		}
+
+
+
+		function useSample(im_src){
+			toDataURL(im_src, function(dataUrl) {
+				var data = dataUrl;
+				document.getElementById("img").src= data;
+				var parts = im_src.split('/');
+				var fn_im = parts.pop() || parts.pop(); 
+
+				// showLoader('Loaded image, uploading ...');
+				var image = {
+					"origin_name": fn_im,
+					"content":data
+				};
+
+				
+				$('#gray_btn').click(function() {
+						gray(image)
+				});
+					$("#gray_btn").removeAttr("disabled");
+			});
+
+		}
+
+		
+ 
         function gray(image) {
 			var path = API_PATH + "/gray"
 

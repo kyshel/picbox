@@ -1,6 +1,11 @@
 # picbox
 Picbox is a preview site for pictures processing.
 
+# log
+- v0.2 choose example ok 
+- v0.1 basic core function achieved
+
+
 
 # usage 使用方法
 先上传图，再选择功能
@@ -37,10 +42,6 @@ bash run_api.py
 open brwoser NOW~
 ```
 
-
-
-# maybe add
-- deploy by container
 
 
 # proxy R2L
