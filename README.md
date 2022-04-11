@@ -1,15 +1,13 @@
 # picbox
 Picbox is a preview site for pictures processing.
 
+ ![preview_pic](https://user-images.githubusercontent.com/11898075/162750212-a90e431d-9a78-4429-801f-8f6c95ebafd2.png)
+
 # log
+- v1.0 finish: pretty UI
 - v0.3 bugfix, gray_img not show
 - v0.2 choose example ok 
 - v0.1 basic core function achieved
-
-
-
-# usage 使用方法
-先上传图，再选择功能
 
 # design
 - frontend: jquery
