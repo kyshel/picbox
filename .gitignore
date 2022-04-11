@@ -5,4 +5,6 @@ __pycache__
 *.pyc
 *.wsgi
 *.log
-static/after/*
+static/after/*.jpg
+static/after/*.jpeg
+static/after/*.png

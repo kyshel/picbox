@@ -2,6 +2,7 @@
 Picbox is a preview site for pictures processing.
 
 # log
+- v0.3 bugfix, gray_img not show
 - v0.2 choose example ok 
 - v0.1 basic core function achieved
 
@@ -11,8 +12,8 @@ Picbox is a preview site for pictures processing.
 先上传图，再选择功能
 
 # design
-- frontend: vue, jquery
-- backend: flask
+- frontend: jquery
+- webserver: flask
 - api: flask
 
 
