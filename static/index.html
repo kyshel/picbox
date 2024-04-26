@@ -56,9 +56,10 @@
 	
 			<div class="col">
 				<label>或点击示例：</label>
-				<img src="example1_ym.jpg"  class="im_example" alt="yangmi" id="im_ym" height="100">
-				<img src="example2_lena.png" class="im_example" alt="lena" height="100" >
-				<img src="example3_ana.jpg" class="im_example"  alt="ana" height="100" >
+				<!-- <img src="example1_ym.jpg"  class="im_example" alt="yangmi" id="im_ym" height="100"> -->
+				<!-- <img src="example2_lena.png" class="im_example" alt="lena" height="100" > -->
+				<!-- <img src="example3_ana.jpg" class="im_example"  alt="ana" height="100" > -->
+				<img src="example4_ocr.png" class="im_example"  alt="ocr" height="100" >
 			</div>
 		</div>
 
@@ -68,8 +69,8 @@
 				
 				<label for="funcs_btn" class="form-label"> 第二步：请选择功能 &nbsp;&nbsp;&nbsp; </label>
 				<div class="btn-group" role="group" id="funcs_btn" aria-label="Basic outlined example">
-					<button type="button" class="btn btn-primary" id="gray_btn" disabled>灰度</button>
-					<button type="button" class="btn btn-primary" disabled>功能2</button>
+					<button type="button" class="btn btn-primary btn_func" id="gray_btn" disabled>灰度</button>
+					<button type="button" class="btn btn-primary btn_func" id="ocr_btn" disabled>OCR</button>
 					<button type="button" class="btn btn-primary" disabled>功能3</button>
 				</div>
 			</div>
@@ -86,7 +87,8 @@
 
 			<div class="col">
 			  	处理后:
-			  <img id="img2"  height="200">
+				<div id="div_ocr"></div>
+			    <img id="img2"  height="200">
 			</div>
   
 		  </div>
@@ -94,29 +96,10 @@
 	</div>
 	  
 
-
-
     <!-- <div id="app">{{ message }}</div> -->
     <!-- <div><button class="btn">see bootstrap btn </button></div> -->
  
  
-
-
- 
-
-
-
-
-
-
-
-
- 
-
- 
-
-
-
 
     <script>
         var API_PATH = "./api";
@@ -142,10 +125,14 @@
 					// console.log(image)
                     // deposit(image);
 
+
+					$(".btn_func").off("click");
 					$('#gray_btn').click(function() {
 						gray(image)
 					});
+
 					$("#gray_btn").removeAttr("disabled");
+
 
 				});
 				FR.readAsDataURL(file_input.files[0]);
@@ -192,11 +179,19 @@
 					"content":data
 				};
 
-				
+				$(".btn_func").off("click");
 				$('#gray_btn').click(function() {
 						gray(image)
 				});
-					$("#gray_btn").removeAttr("disabled");
+				$('#ocr_btn').click(function() {
+						ocr(image)
+				});
+
+
+
+
+				$(".btn_func").removeAttr("disabled");
+
 			});
 
 		}
@@ -205,6 +200,7 @@
  
         function gray(image) {
 			var path = API_PATH + "/gray"
+			$("#div_ocr").html('') ;
 
 			$.ajax({
 				url: path,
@@ -267,6 +263,34 @@
 			// });
 		}
 
+		function ocr(image) {
+			var path = API_PATH + "/ocr"
+			document.getElementById("img2").src = '';
+
+
+			$.ajax({
+				url: path,
+				// type: 'PUT',
+				type: 'POST',
+				dataType: "json",
+				contentType: "application/json",
+				data: JSON.stringify(image),
+				success: function (response,status,xhr) { 
+					// hideLoader();
+					console.log(response)
+					console.log(response.ocr_result)
+					$("#div_ocr").html('"'+response.ocr_result+'"') ;
+
+				},
+				error: function (e){
+					console.log('deposit error:');
+								console.log(e);
+				},
+			})
+
+
+
+		}
 
 
     </script>

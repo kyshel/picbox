@@ -8,3 +8,4 @@ __pycache__
 static/after/*.jpg
 static/after/*.jpeg
 static/after/*.png
+dbg/*

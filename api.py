@@ -11,6 +11,9 @@ def gray():
     return core.do_gray(request)
 
 
+@app.route('/api/ocr', methods=['GET','POST','DELETE','PUT'])
+def ocr():
+    return core.do_ocr(request)
 
 
 

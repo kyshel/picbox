@@ -53,3 +53,42 @@ def do_gray(request):
     # print(json.dumps(request.__dict__,indent=4, sort_keys=True))
     # return json.dumps(request.__dict__,indent=4, sort_keys=True)
     return '111'
+
+
+def do_ocr(request):
+    # fp_grayed = './static/after/grayed.png'
+    # route_grayed = './after/grayed.png'
+    res = {}
+
+    try:
+        json_dict = request.get_json()
+        img_uri = json_dict['content'] # data:image/png;base64,iVBORw0KG...
+        img = data_uri_to_cv2_img(img_uri)
+
+        # img_base64_string = img_uri_str.split(',')[1] # iVBORw0KG...
+        # img_data = base64.b64decode(img_base64_string)
+        # print(json_dict)
+        # with open("tmp.png", "wb") as f:
+        #     f.write(img_data)
+        
+        # img = cv2.imread('filename.png')
+
+        # img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        # cv2.imwrite(fp_grayed, img_gray) 
+
+
+        text = '我知道'
+        res = {
+            'status':'OK',
+            'msg':'Success',
+            'ocr_result':text,
+        }
+
+    except Exception as e:
+        print("Error occured: " + str(e))
+        res = {
+            'status':'ERROR',
+            'msg': str(e),
+        }
+
+    return json.dumps(res ,indent=4, sort_keys=True)
