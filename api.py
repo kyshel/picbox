@@ -1,9 +1,9 @@
 from flask import Flask, send_from_directory, request, url_for
 import core
-
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 
 # api
 @app.route('/api/gray', methods=['GET','POST','DELETE','PUT'])

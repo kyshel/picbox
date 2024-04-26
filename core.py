@@ -12,7 +12,7 @@ def data_uri_to_cv2_img(uri):
 
 def do_gray(request):
     fp_grayed = './static/after/grayed.png'
-    route_grayed = './after/grayed.png'
+    route_grayed = '/after/grayed.png'
     res = {}
 
     try:

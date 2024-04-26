@@ -102,7 +102,9 @@
  
 
     <script>
-        var API_PATH = "./api";
+        var SERVER_ADDR = "60.205.137.191"; //  local set to .
+		var API_PATH =  "//" + SERVER_ADDR + "/api";
+		
 
         document.getElementById("inp").addEventListener("change", readFile);
 
@@ -216,8 +218,9 @@
 				success: function (response,status,xhr) { 
 					// hideLoader();
 					// console.log(response)
-					// console.log(response.route_grayed)
-					document.getElementById("img2").src       = response.route_grayed + '?'+ Date.now();
+					console.log(response.route_grayed)
+					route_grayed_img = response.route_grayed
+					document.getElementById("img2").src= "http://" + SERVER_ADDR + route_grayed_img + '?'+ Date.now();
 
 
 

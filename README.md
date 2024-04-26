@@ -39,7 +39,7 @@ pip install opencv-python Flask
 
 git clone https://github.com/kyshel/picbox.git
 cd picbox
-bash run_api.py
+bash run_api.sh
 
 open brwoser NOW~
 ```
