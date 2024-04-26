@@ -130,8 +130,12 @@
 					$('#gray_btn').click(function() {
 						gray(image)
 					});
+					$('#ocr_btn').click(function() {
+						ocr(image)
+				});
 
-					$("#gray_btn").removeAttr("disabled");
+
+					$(".btn_func").removeAttr("disabled");
 
 
 				});
@@ -277,8 +281,8 @@
 				data: JSON.stringify(image),
 				success: function (response,status,xhr) { 
 					// hideLoader();
-					console.log(response)
-					console.log(response.ocr_result)
+					// console.log(response)
+					// console.log(response.ocr_result)
 					$("#div_ocr").html('"'+response.ocr_result+'"') ;
 
 				},

@@ -24,8 +24,11 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.11.0-Linux-x86_64.sh
 bash Miniconda3-py39_4.11.0-Linux-x86_64.sh 
 echo "PATH=$PATH:/root/miniconda3/bin" >> ~/.bashrc
 su
+
 conda config --set auto_activate_base false
 conda init
+su
+
 conda create -n py39 python=3.9
 conda env list
 conda activate py39
