@@ -4,6 +4,7 @@ Picbox is a preview site for pictures processing.
  ![preview_pic](https://user-images.githubusercontent.com/11898075/162750212-a90e431d-9a78-4429-801f-8f6c95ebafd2.png)
 
 # log
+- v2.0 finish: add ocr 
 - v1.0 finish: pretty UI
 - v0.3 bugfix, gray_img not show
 - v0.2 choose example ok 
