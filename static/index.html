@@ -47,6 +47,10 @@
 		</header>
 
 		<div class="row">
+ 
+
+
+
 			<div class="col">
 				<label>第一步：请上传图片，图片建议小于500k</label>
 				<div id="file_div">
@@ -69,10 +73,13 @@
 				
 				<label for="funcs_btn" class="form-label"> 第二步：请选择功能 &nbsp;&nbsp;&nbsp; </label>
 				<div class="btn-group" role="group" id="funcs_btn" aria-label="Basic outlined example">
-					<button type="button" class="btn btn-primary btn_func" id="gray_btn" disabled>灰度</button>
-					<button type="button" class="btn btn-primary btn_func" id="ocr_btn" disabled>OCR</button>
-					<button type="button" class="btn btn-primary" disabled>功能3</button>
+					<button type="button" class="btn btn-outline-primary btn_func" id="gray_btn" disabled>灰度</button>
+					<button type="button" class="btn btn-outline-primary btn_func" id="ocr_btn" disabled>OCR</button>
+					<!-- <button type="button" class="btn btn-outline-primary" disabled>功能3</button> -->
 				</div>
+
+
+
 			</div>
 		</div>
 
@@ -81,12 +88,17 @@
 			<div class="col">
 			  <div>
 				原图:
+				<div id="no_use"></div>
 				  <img id="img" height="200" >
 			  </div>
 			</div>
 
 			<div class="col">
 			  	处理后:
+				  <div id="loadingDiv" class="spinner-border" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+
 				<div id="div_ocr"></div>
 			    <img id="img2"  height="200">
 			</div>
@@ -107,6 +119,16 @@
 		
 
         document.getElementById("inp").addEventListener("change", readFile);
+	
+		var $loading = $('#loadingDiv').hide();
+		$(document)
+		.ajaxStart(function () {
+			$loading.show();
+		})
+		.ajaxStop(function () {
+			$loading.hide();
+		});
+
 
 
 
@@ -296,7 +318,6 @@
 			})
 
 
-
 		}
 
 
@@ -304,15 +325,6 @@
 
 
 
-
-
-
-
-
-
-
-
-    
 
 
     <script>
